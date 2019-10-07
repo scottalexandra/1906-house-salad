@@ -1,24 +1,22 @@
 # README
+### This project implementats the user story the below user story using behavior driven development and declarative programming.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+```
+As a user
+When I visit "/"
+And I select "Colorado" from the dropdown
+And I click on "Locate Members of the House"
+Then my path should be "/search" with "state=CO" in the parameters
+And I should see a message "7 Results"
+And I should see a list of 7 the members of the house for Colorado
+And they should be ordered by seniority from most to least
+And I should see a name, role, party, and district for each member
 
-Things you may want to cover:
+```
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### Setup
+```
+bundle
+$ rails db:create
+$ rails db:migrate
+```
