@@ -20,10 +20,9 @@ describe "user can search for house members" do
       expect(page).to have_css(".role")
       expect(page).to have_css(".party")
       expect(page).to have_css(".district")
+      expect(page).to have_css(".seniority")
     end
     # And they should be ordered by seniority from most to least
 
   end
 end
-
-# propublica_api_key: 3ATWq2pq3mD1zn7dNtJH3Z7y01h19rqMOA1UDcuV

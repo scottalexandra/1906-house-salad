@@ -1,9 +1,10 @@
-<p><%= @members.count %></p>
+<p><%= @members.count %> Results </p>
 <section class="members">
   <% @members.each do |member| %>
     <p class="name"><%= member.name %></p>
     <p class="role"><%= member.role %></p>
     <p class="party"><%= member.party %></p>
     <p class="district"><%= member.district %></p>
+    <p class="seniority"><%= member.seniority %></p>
   <% end %>
 </section>
