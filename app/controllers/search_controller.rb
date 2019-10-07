@@ -5,37 +5,45 @@ class SearchController < ApplicationController
 
   private
 
-  # def conn
-  #   Faraday.new(
-  #     url: 'https://api.propublica.org/congress/v1/',
-  #     headers: {'x-api-key' => ENV["propublica_api_key"]}
-  #   )
-  # end
-
   def search_members(state)
-    propublica_api_service = PropublicaApiService.new(state)
-    member_data = propublica_api_service.get_members
 
-    #grab relevant data from external api
-    # json_response = conn.get("members/house/#{state}/current.json")
-    # parsed_data = JSON.parse(json_response.body, symbolize_names: true)
-    # member_data = parsed_data[:results]
-
-
-
-
-
-
+    member_data = get_member_data(state)
+    #grab data from API
+    # propublica_api_service = PropublicaApiService.new(state)
+    # member_data = propublica_api_service.get_members
 
 
     #format data by changing it into an object
-    members = member_data.map do |member_hash|
-      Member.new(member_hash)
-    end
+    members = create_members(member_data)
+
+    # members = member_data.map do |member_hash|
+    #   Member.new(member_hash)
+    # end
 
     #format data by sorting it
+    sort_members(members)
+
+    # members.sort_by do |member|
+    #   member.seniority.to_i
+    # end.reverse
+  end
+
+  def get_member_data(state)
+    propublica_api_service = PropublicaApiService.new(state)
+    propublica_api_service.get_members
+  end
+
+  def create_members(member_data)
+    member_data.map do |member_hash|
+      Member.new(member_hash)
+    end
+  end
+
+  def sort_members(members)
     members.sort_by do |member|
       member.seniority.to_i
     end.reverse
   end
+
+
 end
