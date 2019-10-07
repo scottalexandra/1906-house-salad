@@ -1,10 +1,7 @@
-class SearchController < ApplicationController
-  def index
-    @members = SearchFacade.search_members(params[:state])
-    @members = search_members(params[:state])
+class SearchFacade
+  def self.search_members(state)
+    new.search_members(state)
   end
-
-  private
 
   def search_members(state)
     member_data = get_member_data(state)
@@ -28,6 +25,4 @@ class SearchController < ApplicationController
       member.seniority.to_i
     end.reverse
   end
-
-
 end
