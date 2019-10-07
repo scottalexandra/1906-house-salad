@@ -1,16 +1,15 @@
 class SearchFacade
-  def self.search_members(state)
-    new.search_members(state)
+  def initialize(state)
+    @state = state
   end
 
-  def search_members(state)
-    member_data = get_member_data(state)
+  def search_members
+    member_data = get_member_data
     members = create_members(member_data)
     sort_members(members)
   end
 
-  def get_member_data(state)
-    propublica_api_service = PropublicaApiService.new(state)
+  def get_member_data
     propublica_api_service.get_members
   end
 
@@ -25,4 +24,9 @@ class SearchFacade
       member.seniority.to_i
     end.reverse
   end
+
+  def propublica_api_service
+    PropublicaApiService.new(@state)
+  end
+
 end
