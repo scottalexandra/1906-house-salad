@@ -20,3 +20,9 @@ bundle
 $ rails db:create
 $ rails db:migrate
 ```
+
+### Branches
+- `feature-test` - Code for implementing the feature test and view
+- `controller` - Code for implementing all of the functionality in the controller
+- `service` - Code for refactoring the API call into a service
+- `facade` - Code for implementing the facade pattern
