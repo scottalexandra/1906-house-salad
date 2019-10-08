@@ -1,5 +1,5 @@
 # README
-### This project implements the user story the below user story using behavior driven development and declarative programming.
+### This project implements the user story below using behavior driven development and declarative programming.
 
 ```
 As a user
